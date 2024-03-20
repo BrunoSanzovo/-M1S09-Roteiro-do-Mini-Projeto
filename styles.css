@@ -1,4 +1,13 @@
 body {
+    background-image: url('assets/selva.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.5); /* Cor de fundo transparente */
+    font-family: Arial, sans-serif;
+}
+
+body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;

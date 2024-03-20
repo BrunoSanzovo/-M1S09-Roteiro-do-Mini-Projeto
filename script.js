@@ -6,7 +6,7 @@ const secondsDisplay = document.getElementById('seconds');
 
 let timer;
 let isRunning = false;
-let remainingTime;
+let remainingTime = 25 * 60; // Inicialmente definido como 25 minutos
 let stretchInterval;
 
 const stretchExercises = [
@@ -20,7 +20,6 @@ const stretchExercises = [
 
 function startTimer() {
     if (!isRunning) {
-        remainingTime = 25 * 60; // 25 minutos
         timer = setInterval(updateTimer, 1000);
         isRunning = true;
         showExercise();
@@ -35,12 +34,12 @@ function pauseTimer() {
 
 function updateTimer() {
     remainingTime--;
-    const minutes = Math.floor(remainingTime / 60);
-    const seconds = remainingTime % 60;
-    minutesDisplay.textContent = minutes < 10 ? `0${minutes}` : minutes;
-    secondsDisplay.textContent = seconds < 10 ? `0${seconds}` : seconds;
-
-    if (remainingTime === 0) {
+    if (remainingTime >= 0) {
+        const minutes = Math.floor(remainingTime / 60);
+        const seconds = remainingTime % 60;
+        minutesDisplay.textContent = minutes < 10 ? `0${minutes}` : minutes;
+        secondsDisplay.textContent = seconds < 10 ? `0${seconds}` : seconds;
+    } else {
         clearInterval(timer);
     }
 }
