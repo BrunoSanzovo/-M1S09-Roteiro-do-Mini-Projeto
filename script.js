@@ -1,11 +1,6 @@
-const minutesDisplay = document.getElementById('minutes');
-const secondsDisplay = document.getElementById('seconds');
-const startButton = document.getElementById('start');
-const stopButton = document.getElementById('stop');
-const exerciseDescription = document.getElementById('exercise-description');
 
-let timer;
-let isRunning = false;
+
+const exerciseDescription = document.getElementById('exercise-description');
 
 const stretchExercises = [
     "Levante-se e estique os braços acima da cabeça por 10 segundos.",
@@ -16,24 +11,21 @@ const stretchExercises = [
     "Sente-se e estique os braços para frente, mantendo a posição por 20 segundos."
 ];
 
-function startTimer() {
-    if (!isRunning) {
-        let totalTime = 25 * 60; // 25 minutos
-        let remainingTime = totalTime;
-        timer = setInterval(() => {
-            remainingTime--;
-            const minutes = Math.floor(remainingTime / 60);
-            const seconds = remainingTime % 60;
-            minutesDisplay.textContent = minutes < 10 ? `0${minutes}` : minutes;
-            secondsDisplay.textContent = seconds < 10 ? `0${seconds}` : seconds;
-            if (remainingTime === 0) {
-                clearInterval(timer);
-                showExercise();
-            }
-        }, 1000);
-        isRunning = true;
-    }
+function showExercise() {
+    let index = 0;
+    const interval = setInterval(() => {
+        exerciseDescription.textContent = `Exercício de Alongamento: ${stretchExercises[index]}`;
+        index = (index + 1) % stretchExercises.length;
+    }, 5000); // 5 segundos
+
+    setTimeout(() => {
+        clearInterval(interval);
+        exerciseDescription.textContent = "";
+    }, 5 * 60 * 1000); // 5 minutos
 }
+
+showExercise();
+
 
 function stopTimer() {
     clearInterval(timer);
@@ -50,7 +42,7 @@ function showExercise() {
     setTimeout(() => {
         clearInterval(interval);
         exerciseDescription.textContent = "";
-    }, 300000); // 5 minutos
+    }, 5 * 60 * 1000); // 5 minutos
 }
 
 startButton.addEventListener('click', startTimer);
