@@ -50,12 +50,12 @@ function showExercise() {
     stretchInterval = setInterval(() => {
         exerciseDescription.textContent = `Exercício de Alongamento: ${stretchExercises[index]}`;
         index = (index + 1) % stretchExercises.length;
-    }, 5000); // 5 segundos
+    }, 5 * 60 * 1000); // 5 minutos
 
     setTimeout(() => {
         clearInterval(stretchInterval);
         exerciseDescription.textContent = "";
-    }, 5 * 60 * 1000); // 5 minutos
+    }, 25 * 60 * 1000); // 25 minutos
 }
 
 startButton.addEventListener('click', startTimer);
