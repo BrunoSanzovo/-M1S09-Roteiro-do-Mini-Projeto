@@ -1,4 +1,4 @@
-# Pomodoro Timer Project✨
+# Pomodoro Project✨
 
 Este é um projeto de Pomodoro Timer, onde os usuários podem se beneficiar de atividades físicas durante seus períodos de pausa, visando combater o sedentarismo e promover o bem-estar mental e físico.
 
